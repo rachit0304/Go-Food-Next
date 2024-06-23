@@ -22,7 +22,7 @@ function Restraunts() {
 
 
   return (
-    <div>
+    <div className="">
 
       <ul  className="link">{restaurantdata.map((item)=>(
         <li key={item._id} style={{display: "inline"}}>
