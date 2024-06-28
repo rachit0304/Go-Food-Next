@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Container, Row, Col, Card } from "react-bootstrap";
 import DetailsPage from "../../components/detailsPage";
 import styles from "../../src/app/styles/app.scss";
@@ -9,8 +9,11 @@ import GradeIcon from '@mui/icons-material/Grade';
 import BookmarkBorderIcon from "@mui/icons-material/BookmarkBorder";
 import ScreenShareOutlinedIcon from "@mui/icons-material/ScreenShareOutlined";
 import Overview from "../../components/Overview";
+import Navbar from '../../components/Navbar'
+
 
 const RestaurantDetails = ({ restaurant }) => {
+
   const [isOpen, setisOpen] = useState(false);
   const [isBookmark, setisBookmark] = useState(false);
   const [orderOnline , setOrderOnline] = useState(false);
@@ -45,37 +48,38 @@ const RestaurantDetails = ({ restaurant }) => {
     city,
     state,
     price,
-    discountOffer,
+    discount,
   } = restaurant;
 
   return (
     <>
       <div className="container mt-2">
+        
         <DetailsPage image={restaurant.image} />
         <Container>
           <Row>
             <Col>
               <h1 className="mt-2">{name}</h1>
               <p className="lead mb-0">{description}</p>
-              <Card.Subtitle className="mb-2 mt-1 text-muted fw-light fs-5">
+              <Card.Subtitle className="mb-2 mt-1 text-muted fw-light fs-6">
                 {location} {","} {city}
               </Card.Subtitle>
 
-              <Col>
+              <Col className="d-flex mt-4">
                 <button
                   type="button"
-                  className="btn btn-outline-secondary btn-scroll"
+                  className="custom-btn fw-light"
                 >
                   <i>
                     <DirectionsIcon />
                   </i>{" "}
-                  Directions
+                  Direction
                 </button>
                 {isBookmark == true ? (
                   <button
                     type="button"
                     onClick={changeBookmark}
-                    className="btn btn-outline-secondary btn-scroll"
+                    className="custom-btn fw-light"
                   >
                     <i>
                       <BookmarkIcon />
@@ -86,7 +90,7 @@ const RestaurantDetails = ({ restaurant }) => {
                   <button
                     type="button"
                     onClick={changeBookmark}
-                    className="btn btn-outline-secondary btn-scroll"
+                    className="custom-btn fw-light"
                   >
                     <i>
                       <BookmarkBorderIcon />
@@ -96,7 +100,7 @@ const RestaurantDetails = ({ restaurant }) => {
                 )}
                 <button
                   type="button"
-                  className="btn btn-outline-secondary btn-scroll"
+                  className="custom-btn fw-light" 
                 >
                   <i>
                     <ScreenShareOutlinedIcon />
@@ -107,13 +111,14 @@ const RestaurantDetails = ({ restaurant }) => {
             </Col>
 
             <Col className="mt-4">
-              <p className="badge bg-success px-2 py-2">
-                {ratings} <i className="py-2"><GradeIcon fontSize='vsmall'/></i>
-              </p>
+           
+            <p className="badge bg-success px-2 py-1 fs-6">
+                {ratings} 
 
-              <Card.Text>
-                <strong>Discount:</strong> {discountOffer}
-              </Card.Text>
+              <i><GradeIcon fontSize='very small'/></i>
+              </p>
+            
+            
             </Col>
           </Row>
 
@@ -142,6 +147,8 @@ const RestaurantDetails = ({ restaurant }) => {
     </>
   );
 };
+
+useEffect
 
 export const getServerSideProps = async (context) => {
   const { slug } = context.query;

@@ -14,6 +14,19 @@
     color: black;
 }
 
+.custom-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2px 8px;
+    border: 1px solid gray;
+    border-radius: 5px;
+    background-color: #fff;
+    color: #333;
+    font-size: 16px;
+    margin: 5px;
+    text-decoration: none;
+}
 
 .canvas-btn{
 display: flex;
@@ -22,7 +35,8 @@ display: flex;
 
 .h2_best_food{
     margin-top: 3vw;
-    margin-left: 3.5%;
+    margin-bottom: 0px;
+    margin-left: 13vw;
     font-size: 22px;
     font-weight: 500;
     color: black;
@@ -76,18 +90,6 @@ display: flex;
 
     .card-content{
 
-        .card-rating{
-            float: right; 
-            margin-bottom: 5px;
-            height: 18.5px; 
-            font-size: 13px; 
-            font-weight: 800; 
-            background-color: green; 
-            width: 34px;
-            color: white;
-            padding: 6px 9px 8px 4px;
-            border-radius: 4px;
-        }
 
         .card-paragraph{
             font-size: 13px; 
@@ -306,6 +308,14 @@ form input{
 
     .fa-solid{
         margin-right: 3px;
+    }
+    .h2_best_food{
+        margin-top: 3vw;
+        margin-bottom: 1vw;
+        margin-left: 11vw;
+        font-size: 22px;
+        font-weight: 500;
+        color: black;
     }
 
     #mobile-search-2{

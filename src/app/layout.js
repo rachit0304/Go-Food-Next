@@ -3,6 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { baselightTheme } from "./utils/theme/DefaultColors";
 import { ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
+import Navbar from "../../components/Navbar";
 
 
 // export const metadata = {
@@ -18,6 +19,7 @@ export default function Layout({ children }) {
         <ThemeProvider theme={baselightTheme}>
 
           <CssBaseline />
+          <Navbar/>
           <main> {children}</main>
          
         </ThemeProvider>

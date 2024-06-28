@@ -1,8 +1,8 @@
+'use client'
 import React, { useState } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import Link from 'next/link';
-import { useRouter } from 'next/router';
-
+import { useRouter } from 'next/navigation';
 
 const login = () => {
     const router = useRouter();
@@ -40,7 +40,7 @@ const login = () => {
         else if(response.success == "Admin"){
             alert("You are logged in as a admin");
             localStorage.setItem("adminToken" , data.email);
-            router.push("/admin");
+            router.push('/admin');
         }
 
     }

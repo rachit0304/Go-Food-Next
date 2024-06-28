@@ -1,7 +1,7 @@
 'use client'
 import React from "react";
-import { useState } from "react";
 import styles from '../src/app/styles/app.scss'
+import GradeIcon from '@mui/icons-material/Grade';
 
 const CardView = ({
   name,
@@ -13,33 +13,13 @@ const CardView = ({
   food_image,
   discount,
 }) => {
-  let [items_in_cart, setItems_in_cart] = useState(0);
-
-  const add_cart_class = items_in_cart === 0 ? "" : "";
-  const hideClass = items_in_cart > 0 ? "" : "hidden";
-
-  const add_item = () => {
-    setItems_in_cart(items_in_cart + 1);
-  };
-  const remove_item = () => {
-    if (items_in_cart > 0) {
-      setItems_in_cart(items_in_cart - 1);
-    }
-  };
-
-  const add_in_cart = () => {
-    if (items_in_cart === 0) setItems_in_cart(items_in_cart + 1);
-    else {
-      localStorage.setItem(`${name}`, `${items_in_cart}`);
-      console.log(localStorage);
-    }
-  };
-
 
   return (
-    <div className="card-view-first">
-
-      <div className="card-view" >
+    <div className="card-view-first container justify-content-between mt-0">
+    {
+    console.log(discount)
+    }
+      <div className="card-view">
         <img className="card-image" src={food_image} alt="food-image" />
 
         <p className="discount-p">
@@ -48,28 +28,14 @@ const CardView = ({
         </p>
 
         <div className="card-content">
-          {/* <div className="cart_add">
-            <i
-              className={`fa-solid fa-plus ${hideClass}`}
-              onClick={add_item}
-            ></i>
-            <p className={`${hideClass}`}> {" " + items_in_cart + " "} </p>
-            <i
-              className={`fa-solid fa-minus ${hideClass}`}
-              onClick={remove_item}
-            ></i>
-            <button className={`${add_cart_class}`} onClick={add_in_cart}>
-              Add
-            </button>
-          </div> */}
 
-          <div>
-            <p className="card-rating">{rating}*</p>
+          <div className="d-flex justify-content-between">
             <h4 className="card-content-h4">{name}</h4>
-            <p className="card-content-p">
-              <span style={{lineHeight: '15px'}} className="rupee-symbol"></span> {price} for two
-            </p>
+            <p className="badge bg-success px-2 py-2">{rating} <i><GradeIcon fontSize="very small"/></i> </p>
           </div>
+          <p className="card-content-p">
+              <span style={{lineHeight: '15px'}} className="rupee-symbol"></span> {price} for two
+          </p>
 
           <div>
             <p style={{lineHeight: '15px'}} className="card-content-p2">{description}...</p>

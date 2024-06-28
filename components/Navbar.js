@@ -4,10 +4,12 @@ import Link from 'next/link';
 
 import { useRouter } from 'next/navigation';
 
+
+
 function Navbar() {
   const router = useRouter();
 
-  const hadnleLogout=()=>{
+  const handleLogout=()=>{
     localStorage.removeItem("loginToken");
     router.push("/login")
   }
@@ -50,7 +52,7 @@ function Navbar() {
           </ul>
 
           {
-            localStorage.getItem("loginToken") ? <button type="button" className="btn btn-outline-primary btn-sm" onClick={hadnleLogout}>Logout</button> :
+            localStorage.getItem("loginToken") ? <button type="button" className="btn btn-outline-primary btn-sm" onClick={handleLogout}>Logout</button> :
             <div className='d-flex m-3'>
             <button id="login-button" type="button" className="btn btn-outline-primary btn-sm m-1">
               <Link href="/login" className='auth-btn'>
@@ -95,7 +97,7 @@ function Navbar() {
           </li>
         </ul>
         {
-            localStorage.getItem("loginToken") ? <button type="button" className="btn btn-outline-primary btn-sm" onClick={hadnleLogout}>Logout</button> :
+            localStorage.getItem("loginToken") ? <button type="button" className="btn btn-outline-primary btn-sm" onClick={handleLogout}>Logout</button> :
             <div className='d-flex m-3'>
             <button id="login-button" type="button" className="canvas-btn btn btn-outline-primary btn-sm m-1">
               <Link href="/login" className='auth-btn'>

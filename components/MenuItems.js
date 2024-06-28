@@ -8,12 +8,15 @@ import RemoveIcon from '@mui/icons-material/Remove';
 const MenuItems = ({item}) => {
 
     let [items_in_cart, setItems_in_cart] = useState(0);
+    let price = item.price;
+    let totalPrice = 0;
 
     const add_cart_class = items_in_cart === 0 ? "d-none" : "";
     const hideClass = items_in_cart > 0 ? "d-none" : "";
   
     const add_item = () => {
       setItems_in_cart(items_in_cart + 1);
+      
     };
     const remove_item = () => {
       if (items_in_cart > 0) {
@@ -27,30 +30,30 @@ const MenuItems = ({item}) => {
 
   return (
     <div className="d-flex align-items-center">
-    <img
-      width={200}
-      height={200}
-      className="flex-shrink-0 img-fluid rounded"
+      <img
+      className=" rounded"
       src={item.imageSrc}
       alt=""
-      style={{ width: 80 }}
-    />
+      style={{ width: 80 , height: 60 }}
+     />
     <div className="w-100 d-flex flex-column text-start ps-4">
-      <h5 className="d-flex justify-content-between border-bottom pb-2">
+  
+      <h5 className="d-flex border-bottom pb-1">
         <span>{item.name}</span>
-        <span className="text-primary">{item.price}</span>
-        <div>
-        <button className={`btn btn-primary ${hideClass}`} onClick={add_item}>Add</button>
-        <span className={`${add_cart_class} m-3`}><AddIcon onClick={add_item}/></span>
-        <span className={`${add_cart_class}`}>{items_in_cart}</span>
-        <span className={`${add_cart_class} m-3`}><RemoveIcon onClick={remove_item} /></span>
-        </div>
-
-        <button className={`${add_cart_class} btn btn-primary mt-0`} onClick={add_to_cart}>Add</button>
       </h5>
-      <small className="fst-italic">
-        {item.description}
-      </small>
+        <div className='d-flex justify-content-between'>
+        <span className="text-primary">{price}</span>
+  
+        <div>
+        <div className='d-flex justify-content-between'> 
+        <span className={`${add_cart_class}`}> <button onClick={add_item} className='btn btn-outline-primary'><AddIcon fontSize='vsmall' /></button> </span>
+        <span className={`${add_cart_class} m-2`}>{items_in_cart}</span>
+        <span className={`${add_cart_class}`}> <button onClick={remove_item} className='btn btn-outline-primary'><RemoveIcon fontSize='vsmall' /></button> </span>
+        </div>
+        
+        <button className={`btn btn-primary ${hideClass}`} onClick={add_item}>Add</button>
+        </div>
+        </div>
     </div>
   </div>
   )

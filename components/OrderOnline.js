@@ -14,27 +14,27 @@ const OrderOnline = () => {
         {
           name: "Burger",
           price: "₹199",
-          imageSrc: "https://i.imgur.com/2ry8F0i.jpg",
+          imageSrc: "https://images.pexels.com/photos/341044/pexels-photo-341044.png?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
         },
         {
           name: "Paneer Tika",
           price: "₹299",
-          imageSrc: "https://i.imgur.com/2ry8F0i.jpg",
+          imageSrc: "https://images.pexels.com/photos/2825225/pexels-photo-2825225.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load",
         },
         {
           name: "Momos",
           price: "₹199",
-          imageSrc: "https://i.imgur.com/2ry8F0i.jpg",
+          imageSrc: "https://images.pexels.com/photos/4078059/pexels-photo-4078059.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load",
         },
         {
           name: "Kadhai Paneer",
           price: "₹399",
-          imageSrc: "https://i.imgur.com/2ry8F0i.jpg",
+          imageSrc: "https://images.pexels.com/photos/4062498/pexels-photo-4062498.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load",
         },
         {
           name: "Mix Veg",
           price: "₹149",
-          imageSrc: "https://i.imgur.com/2ry8F0i.jpg",
+          imageSrc: "https://images.pexels.com/photos/341045/pexels-photo-341045.png?auto=compress&cs=tinysrgb&w=600&lazy=load",
         },
         // Add more breakfast items as needed
       ],

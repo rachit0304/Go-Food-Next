@@ -7,7 +7,6 @@ const addrestaurant = () => {
 
     const router = useRouter();
 
-
     const[id,setId] = useState();
     const[name,setName] = useState("");
     const[description,setDescription] = useState("");
@@ -16,7 +15,7 @@ const addrestaurant = () => {
     const[latitude,setLatitude] = useState("");
     const[longitude,setLongitude] = useState("");
     const[price,setPrice] = useState("");
-    const[discountOffer,setDiscountOffer] = useState("");
+    const[discount,setDiscount] = useState("");
     const[city,setCity] = useState("");
     const[state,setState] = useState("");
     const[image,setImage] = useState("");
@@ -57,7 +56,7 @@ const addrestaurant = () => {
             break;
             
             case 'discount':
-              setDiscountOffer(e.target.value);
+              setDiscount(e.target.value);
             break;
             case 'image':
               setImage(e.target.value);
@@ -71,7 +70,7 @@ const addrestaurant = () => {
 
       const handleSubmit =async (e)=>{
         e.preventDefault();
-        let data = {id,name,description,ratings,price,image,location,city,state,discountOffer,latitude,longitude};
+        let data = {id,name,description,ratings,price,image,location,city,state,discount,latitude,longitude};
         let res = await fetch('http://localhost:3000/api/addrestaurants', {
             method: 'POST',
             headers: {
@@ -237,10 +236,10 @@ const addrestaurant = () => {
         </div>
       </div>
       <div className="row mb-3">
-        <label htmlFor="discountOffer" className="col-sm-2 col-form-label">Discount</label>
+        <label htmlFor="discount" className="col-sm-2 col-form-label">Discount</label>
         <div className="col-sm-10">
           <input
-            value={discountOffer}
+            value={discount}
             onChange={handleChange}
             type="text"
             name="discount"

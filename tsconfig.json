@@ -23,6 +23,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "pages/admin/components/dashboard/TheMyContacts.jsx", "pages/admin/components/dashboard/TheMyRestaurants.jsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "pages/admin/components/dashboard/TheMyContacts.jsx", "pages/admin/components/dashboard/TheMyRestaurants.jsx", "pages/admin/loading.js"],
   "exclude": ["node_modules"]
 }
