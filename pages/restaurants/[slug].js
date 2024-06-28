@@ -1,11 +1,11 @@
-import React, { use, useState } from "react";
+import React, { useState } from "react";
 import { Container, Row, Col, Card } from "react-bootstrap";
 import DetailsPage from "../../components/detailsPage";
 import styles from "../../src/app/styles/app.scss";
-import Link from "next/link";
-import Menu from "../../components/Menu";
+import OrderOnline from "../../components/OrderOnline";
 import DirectionsIcon from "@mui/icons-material/Directions";
 import BookmarkIcon from "@mui/icons-material/Bookmark";
+import GradeIcon from '@mui/icons-material/Grade';
 import BookmarkBorderIcon from "@mui/icons-material/BookmarkBorder";
 import ScreenShareOutlinedIcon from "@mui/icons-material/ScreenShareOutlined";
 import Overview from "../../components/Overview";
@@ -13,35 +13,21 @@ import Overview from "../../components/Overview";
 const RestaurantDetails = ({ restaurant }) => {
   const [isOpen, setisOpen] = useState(false);
   const [isBookmark, setisBookmark] = useState(false);
-  const [menu , setMenu] = useState(false);
+  const [orderOnline , setOrderOnline] = useState(false);
   const [overview , setOverview] = useState(true);
-
-  const scrollToSection = () => {
-    window.scrollTo({
-      top: 2000,
-      behavior: "smooth",
-    });
-  };
-
-  const toggleMenu = () => {
-    setisOpen(!isOpen);
-    if (isOpen === true) {
-      scrollToSection();
-    }
-  };
 
   const changeBookmark = () => {
     setisBookmark(!isBookmark);
   };
 
-  const changeMenu = ()=>{
+  const changeOrderOnline = ()=>{
     setOverview(false);
-    setMenu(!menu);
+    setOrderOnline(true);
 
   }
 
   const changeOverview = ()=>{
-    setMenu(false);
+    setOrderOnline(false);
     setOverview(true);
   }
 
@@ -69,9 +55,9 @@ const RestaurantDetails = ({ restaurant }) => {
         <Container>
           <Row>
             <Col>
-              <h1>{name}</h1>
-              <p className="lead">{description}</p>
-              <Card.Subtitle className="mb-2 text-muted fw-normal">
+              <h1 className="mt-2">{name}</h1>
+              <p className="lead mb-0">{description}</p>
+              <Card.Subtitle className="mb-2 mt-1 text-muted fw-light fs-5">
                 {location} {","} {city}
               </Card.Subtitle>
 
@@ -122,7 +108,7 @@ const RestaurantDetails = ({ restaurant }) => {
 
             <Col className="mt-4">
               <p className="badge bg-success px-2 py-2">
-                <>{ratings}*</>
+                {ratings} <i className="py-2"><GradeIcon fontSize='vsmall'/></i>
               </p>
 
               <Card.Text>
@@ -133,24 +119,23 @@ const RestaurantDetails = ({ restaurant }) => {
 
           <div className="mt-4 d-flex">
             <p>
-              <h4 onClick={changeOverview} className="fw-light text-secondary mx-4"> <Link style={{textDecoration: 'none' }} href={'/restaurants'}>Overview</Link> </h4>
+              <h4 onClick={changeOverview} className="fw-light text-secondary mx-4"> Overview </h4>
             </p>
 
             <p>
-              <h4 className="fw-light text-secondary mx-4"><Link style={{textDecoration: 'none'}} href={'/restaurants'}>Order Online</Link></h4>
+              <h4 onClick={changeOrderOnline} className="fw-light text-secondary mx-4"><a style={{textDecoration: 'none'}}>Order Online</a></h4>
             </p>
             <p>
-              <h4 className="fw-light text-secondary mx-4"><Link style={{textDecoration: 'none'}} href={'/restaurants'}>Reviews</Link></h4>
+              <h4 className="fw-light text-secondary mx-4"><a style={{textDecoration: 'none'}}>Reviews</a></h4>
             </p>
             <p>
-              <h4 onClick={changeMenu} className="fw-light text-secondary mx-4"><Link style={{textDecoration: 'none'}} href={'/restaurants'}>Menu</Link></h4>
+              <h4 className="fw-light text-secondary mx-4"><a style={{textDecoration: 'none'}}>Menu</a></h4>
             </p>
           </div>
 
           <hr className="mt-0" />
-
           {overview && <Overview price={price}/>}
-          {menu && <Menu/>}
+          {orderOnline && <OrderOnline/>}
 
         </Container>
       </div>

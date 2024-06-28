@@ -6,25 +6,41 @@ const Overview = ({price}) => {
     <div>
     
         <h3>About this place</h3>
-        <p className='lead'>Menu</p>
-        <div>
-        <p className='lead'>Cuisines</p>
+        <p className='fs-4'>Menu</p>
 
-        <button>North Indian</button>
-        <button>Mughlai</button>
-        <button>Fast Food</button>
+        <div>
+        <p className='fs-4'>Cuisines</p>
+        <button className='rounded-pill btn btn-outline-secondary mt-0'>North Indian</button>
+        <button className='rounded-pill btn btn-outline-secondary mt-0'>Mughlai</button>
+        <button className='rounded-pill btn btn-outline-secondary mt-0'>Fast Food</button>
         </div>
 
         <div>
-            <p>People say this place is known For</p>
-            <p></p>
+            <p className='fs-4 mb-1'>People say this place is known For</p>
+            <p className='fw-light fs-5'>Interior, Cafe, Owner, Ambiance, Service, Experience</p>
         </div>
 
         <div>
-            <p>Average Cost</p>
-            <p ><span className="rupee-symbol"></span>{price} for two people (approx)</p>
+            <p className='fs-4 mb-1'>Average Cost</p>
+            <p className='fw-light fs-5 mb-0'>₹{price} for two people (approx)</p>
+            <p className='fw-lighter'>Exclusive of applicable taxes and charges, if any</p>
         </div>
 
+        <div>
+          <p className='fs-5 fw-light'>Cash and Cards accepted</p>
+        </div>
+
+        <div className='mt-4'>
+          <p className='fs-4 mb-1'>More Info</p>
+          <div className='d-flex w-25 justify-content-between'>
+            <p>Home Delievery</p>
+            <p>Takeaway Available</p>
+          </div>
+          <div className='d-flex w-25 justify-content-between'>
+            <p>Family Friendly</p>
+            <p>Indoor Available</p>
+          </div>
+        </div>
     </div>
   )
 }
