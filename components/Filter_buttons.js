@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 
 const Filter_buttons = () => {
   return (
-    <div>
+    <div className='container'>
       <div className="btn-scroll-div ms-lg-5">
       <button type="button" className="btn btn-outline-secondary btn-scroll">
         <i className="fa-solid fa-filter"></i>Filters

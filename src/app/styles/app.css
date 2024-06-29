@@ -44,10 +44,6 @@
   color: black;
 }
 
-.card-view-first {
-  display: inline;
-}
-
 .card-view {
   width: 25%;
   position: relative;

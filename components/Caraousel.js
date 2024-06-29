@@ -7,8 +7,8 @@ import Image from 'next/image'
 
 export default function Caraousel() {
   return (
-    <div>
-      <div>
+   
+      <div className='container'>
       <div
         id="carouselControls"
         className="carousel slide"
@@ -18,7 +18,7 @@ export default function Caraousel() {
           <div className="carousel-item active">
             <Image
               src={first_image}
-              className="d-block w-100"
+              className="d-block w-100 rounded-top rounded-bottom"
               alt="french fries"
             />
           </div>
@@ -57,6 +57,6 @@ export default function Caraousel() {
         </button>
       </div>
     </div>
-    </div>
+   
   )
 }

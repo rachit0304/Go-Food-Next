@@ -1,20 +1,23 @@
 "use client"
 import React from 'react'  
+import { useSession, signIn, signOut } from "next-auth/react"
 import Link from 'next/link';
+import FoodBankIcon from '@mui/icons-material/FoodBank';
 
 import { useRouter } from 'next/navigation';
 
 
-
 function Navbar() {
   const router = useRouter();
+
+  const { data: session } = useSession();
 
   const handleLogout=()=>{
     localStorage.removeItem("loginToken");
     router.push("/login")
   }
   return (
-    <div>
+    <div className='container mb-3'>
         <nav className="navbar navbar-expand-lg mt-auto mb-auto">
         <div className="container-fluid">
         <button
@@ -52,7 +55,12 @@ function Navbar() {
           </ul>
 
           {
-            localStorage.getItem("loginToken") ? <button type="button" className="btn btn-outline-primary btn-sm" onClick={handleLogout}>Logout</button> :
+            session ? 
+            <div className='d-flex ms-3'>
+           
+            <button className='btn border'>Cart</button>
+            <button type="button" className="btn btn-outline-primary btn-sm ms-4" onClick={()=>signOut()}>Logout</button> 
+            </div>:
             <div className='d-flex m-3'>
             <button id="login-button" type="button" className="btn btn-outline-primary btn-sm m-1">
               <Link href="/login" className='auth-btn'>
@@ -97,7 +105,7 @@ function Navbar() {
           </li>
         </ul>
         {
-            localStorage.getItem("loginToken") ? <button type="button" className="btn btn-outline-primary btn-sm" onClick={handleLogout}>Logout</button> :
+            session ? <button type="button" className="btn btn-outline-primary btn-sm" onClick={handleLogout}>Logout</button> :
             <div className='d-flex m-3'>
             <button id="login-button" type="button" className="canvas-btn btn btn-outline-primary btn-sm m-1">
               <Link href="/login" className='auth-btn'>

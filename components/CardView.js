@@ -15,12 +15,10 @@ const CardView = ({
 }) => {
 
   return (
-    <div className="card-view-first container justify-content-between mt-0">
-    {
-    console.log(discount)
-    }
+    <div className="d-inline">
+
       <div className="card-view">
-        <img className="card-image" src={food_image} alt="food-image" />
+        <img className="card-image" src={food_image} alt="restaurant-image" />
 
         <p className="discount-p">
           <i className="fa-solid fa-crown discount-p-icon"></i>

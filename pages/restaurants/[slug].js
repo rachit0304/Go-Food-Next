@@ -54,7 +54,7 @@ const RestaurantDetails = ({ restaurant }) => {
   return (
     <>
       <div className="container mt-2">
-        
+        <Navbar/>
         <DetailsPage image={restaurant.image} />
         <Container>
           <Row>
@@ -123,18 +123,18 @@ const RestaurantDetails = ({ restaurant }) => {
           </Row>
 
           <div className="mt-4 d-flex">
-            <p>
-              <h4 onClick={changeOverview} className="fw-light text-secondary mx-4"> Overview </h4>
+            <p onClick={changeOverview} className="fw-light text-secondary mx-4 fs-4">
+               Overview 
             </p>
 
-            <p>
-              <h4 onClick={changeOrderOnline} className="fw-light text-secondary mx-4"><a style={{textDecoration: 'none'}}>Order Online</a></h4>
+            <p onClick={changeOrderOnline} className="fw-light text-secondary mx-4 fs-4">
+              Order Online
             </p>
-            <p>
-              <h4 className="fw-light text-secondary mx-4"><a style={{textDecoration: 'none'}}>Reviews</a></h4>
+            <p className="fw-light text-secondary mx-4 fs-4">
+            Reviews
             </p>
-            <p>
-              <h4 className="fw-light text-secondary mx-4"><a style={{textDecoration: 'none'}}>Menu</a></h4>
+            <p className="fw-light text-secondary mx-4 fs-4">
+              Menu
             </p>
           </div>
 

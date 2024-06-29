@@ -20,11 +20,11 @@ function Restraunts() {
   }, []);
 
 
-
   return (
-    <div className="">
-      {console.log(restaurantdata)}
-
+    <div>
+      <h2 className="h2_best_food">
+        Best Food in Chandigarh
+      </h2>
       <ul  className="link">{restaurantdata.map((item)=>(
         <li key={item._id} style={{display: "inline"}}>
      
@@ -37,7 +37,7 @@ function Restraunts() {
         location={item.location}
         distance={item.distance}
         food_image={item.image}
-        discount={item.discountOffer}
+        discount={item.discount}
         /></Link>
   
         </li>

@@ -42,10 +42,6 @@ display: flex;
     color: black;
 }
 
-.card-view-first{
-    display: inline;
-}
-
 .card-view{
     .card-image{
         height: 20vw;
@@ -136,7 +132,6 @@ display: flex;
 
 
 }
-
 
 .card-view:hover{
     cursor: pointer;
