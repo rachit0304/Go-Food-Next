@@ -5,7 +5,8 @@ import RemoveIcon from '@mui/icons-material/Remove';
 
 
 
-const MenuItems = ({item}) => {
+const MenuItems = ({item, addItem}) => {
+
 
     let [items_in_cart, setItems_in_cart] = useState(0);
     let price = item.price;
@@ -13,8 +14,14 @@ const MenuItems = ({item}) => {
 
     const add_cart_class = items_in_cart === 0 ? "d-none" : "";
     const hideClass = items_in_cart > 0 ? "d-none" : "";
+
+    const handleAdd = ()=>{
+      addItem(item);
+      
+    }
   
     const add_item = () => {
+      handleAdd();
       setItems_in_cart(items_in_cart + 1);
       
     };
@@ -24,9 +31,6 @@ const MenuItems = ({item}) => {
       }
     };
 
-    const add_to_cart=()=>{
-        alert(`${items_in_cart} items added to cart`);
-    }
 
   return (
     <div className="d-flex align-items-center">

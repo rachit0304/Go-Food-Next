@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import MenuItems from "./MenuItems";
 
-const OrderOnline = () => {
+const OrderOnline = ({addItem}) => {
   const menuItems = [
     {
       category: "Breakfast",
@@ -97,6 +97,7 @@ const OrderOnline = () => {
     },
   ];
 
+
   return (
     <React.Fragment>
       <div className="py-2">
@@ -109,7 +110,6 @@ const OrderOnline = () => {
           <div
             className=" text-center "
           >
-          
             <div className="tab-content">
               {menuItems.map((category, index) => (
                 <div
@@ -122,7 +122,7 @@ const OrderOnline = () => {
                   <div className="row g-4">
                     {category.items.map((item, itemIndex) => (
                       <div className="col-lg-6" key={itemIndex}>
-                        <MenuItems item={item}/>
+                        <MenuItems item={item} addItem={addItem}/>
                       </div>
                     ))}
                   </div>

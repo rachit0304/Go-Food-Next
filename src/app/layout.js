@@ -20,6 +20,7 @@ export default function Layout({ children }) {
         <ThemeProvider theme={baselightTheme}>
 
           <CssBaseline />
+
           <SessionProvider session={children.session}>
           <Navbar/>
           <main> {children}</main>

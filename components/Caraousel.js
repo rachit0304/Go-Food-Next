@@ -5,7 +5,7 @@ import third_image from '../public/assets/images/pixzolo-photography-3tL4vtrFqTQ
 import 'bootstrap/dist/css/bootstrap.min.css'
 import Image from 'next/image'
 
-export default function Caraousel() {
+export default function Caraousel(){
   return (
    
       <div className='container'>
@@ -14,8 +14,8 @@ export default function Caraousel() {
         className="carousel slide"
         data-bs-ride="carousel"    
       >
-        <div className="carousel-inner">
-          <div className="carousel-item active">
+        <div className="carousel-inner rounded-top rounded-bottom">
+          <div className="carousel-item active ">
             <Image
               src={first_image}
               className="d-block w-100 rounded-top rounded-bottom"
@@ -25,14 +25,14 @@ export default function Caraousel() {
           <div className="carousel-item">
             <Image
               src={second_image}
-              className="d-block w-100"
+              className="d-block w-100 rounded-top rounded-bottom"
               alt="salad"
             />
           </div>
           <div className="carousel-item">
             <Image
               src={third_image}
-              className="d-block w-100"
+              className="d-block w-100 rounded-top rounded-bottom"
               alt="hotdog"
             />
           </div>

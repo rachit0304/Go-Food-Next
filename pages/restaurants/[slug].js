@@ -18,6 +18,12 @@ const RestaurantDetails = ({ restaurant }) => {
   const [isBookmark, setisBookmark] = useState(false);
   const [orderOnline , setOrderOnline] = useState(false);
   const [overview , setOverview] = useState(true);
+  const [cart , setCart] = useState();
+
+
+  const addItem=(item) => {
+    setCart(item);
+  };
 
   const changeBookmark = () => {
     setisBookmark(!isBookmark);
@@ -54,7 +60,7 @@ const RestaurantDetails = ({ restaurant }) => {
   return (
     <>
       <div className="container mt-2">
-        <Navbar/>
+        <Navbar cart={cart} addItem={addItem} />
         <DetailsPage image={restaurant.image} />
         <Container>
           <Row>
@@ -139,8 +145,8 @@ const RestaurantDetails = ({ restaurant }) => {
           </div>
 
           <hr className="mt-0" />
-          {overview && <Overview price={price}/>}
-          {orderOnline && <OrderOnline/>}
+          {overview && <Overview />}
+          {orderOnline && <OrderOnline addItem={addItem}/>}
 
         </Container>
       </div>

@@ -1,5 +1,5 @@
 "use client"
-import React from 'react'  
+import React, { useEffect, useState } from 'react'  
 import { useSession, signIn, signOut } from "next-auth/react"
 import Link from 'next/link';
 import FoodBankIcon from '@mui/icons-material/FoodBank';
@@ -7,7 +7,41 @@ import FoodBankIcon from '@mui/icons-material/FoodBank';
 import { useRouter } from 'next/navigation';
 
 
-function Navbar() {
+function Navbar({cart , addItem}) {
+
+  const [cartStorage , setCartStorage] = useState({});
+
+  useEffect(()=>{
+    setCartStorage(JSON.parse(localStorage.getItem('cart')));
+  },[])
+
+  
+  const [cartItem , setCartItem] = useState(cartStorage);
+  const [cartNumber , setCartNumber] = useState(cartStorage?.length);
+
+
+  useEffect(()=>{
+
+    if(cart){
+      console.log(cart);
+    if(cartNumber){
+      let localCartItem = cartItem;
+      localCartItem.push(JSON.parse(JSON.stringify(cart))) // to remove the reference form the cart object
+      setCartItem(localCartItem);
+      setCartNumber(cartNumber+1);
+      localStorage.setItem('cart' ,JSON.stringify(localCartItem));
+
+    }
+    else{
+      setCartNumber(1);
+      setCartItem([cart]);
+      localStorage.setItem('cart' , JSON.stringify([cart]));
+    }
+
+  }
+
+  },[cart])
+
   const router = useRouter();
 
   const { data: session } = useSession();
@@ -58,7 +92,7 @@ function Navbar() {
             session ? 
             <div className='d-flex ms-3'>
            
-            <button className='btn border'>Cart</button>
+            <Link className='btn border d-flex' href='/cart'>Cart <i>{"("}{cartNumber ? cartNumber : 0}{")"}</i></Link>
             <button type="button" className="btn btn-outline-primary btn-sm ms-4" onClick={()=>signOut()}>Logout</button> 
             </div>:
             <div className='d-flex m-3'>
