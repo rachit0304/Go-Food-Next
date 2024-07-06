@@ -20,40 +20,6 @@ const RestaurantDetails = ({ restaurant }) => {
   const [overview , setOverview] = useState(true);
   const [cart , setCart] = useState();
   const [cartNumber , setCartNumber] = useState(0);
-  const [cartStorage , setCartStorage]= useState([]);
-  const [cardIds, setCardids] = useState()
-
-  useEffect(()=>{
-    setCartStorage(JSON.parse(localStorage.getItem('cart'))); 
-
-  },[]);
-
-
-  const addItem=(item) => {
-    let cartitems = cartStorage;
-    cartitems = cartitems ? JSON.parse(cartitems) : [];
-
-    const existingItemIndex = cartitems.findIndex(cartItem => cartItem.id === item.id);
-
-    if (existingItemIndex >= 0) {
-      cartitems[existingItemIndex].qty += item.qty;
-    } else {
-      cartitems.push(item);
-    }
-    localStorage.setItem('cart', JSON.stringify(cart));
-    setCart(item);
-
-  };
-
-  const handleRemovefromCart=(id)=>{
-    
-    if (cartStorage) {
-      let cartItems = cartStorage;
-      cartItems = cartItems.filter(item => item.id !== id);
-      setCart(cartItems);
-    } 
-  }
-
 
   const changeBookmark = () => {
     setisBookmark(!isBookmark);
@@ -90,7 +56,7 @@ const RestaurantDetails = ({ restaurant }) => {
   return (
     <>
       <div className="container mt-2">
-        <Navbar cart={cart} addItem={addItem} cartNumber={cartNumber} setCartNumber={setCartNumber}/>
+        <Navbar cart={cart} />
         <DetailsPage image={restaurant.image} />
         <Container>
           <Row>
@@ -167,7 +133,7 @@ const RestaurantDetails = ({ restaurant }) => {
               Order Online
             </p>
             <p className="fw-light text-secondary mx-4 fs-4">
-            Reviews
+              Reviews
             </p>
             <p className="fw-light text-secondary mx-4 fs-4">
               Menu
@@ -176,7 +142,7 @@ const RestaurantDetails = ({ restaurant }) => {
 
           <hr className="mt-0" />
           {overview && <Overview price={price}/>}
-          {orderOnline && <OrderOnline addItem={addItem} cartNumber={cartNumber} setCartNumber={setCartNumber} handleRemovefromCart={handleRemovefromCart}/>}
+          {orderOnline && <OrderOnline/>}
 
         </Container>
       </div>

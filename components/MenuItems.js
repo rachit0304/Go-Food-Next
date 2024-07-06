@@ -7,7 +7,6 @@ import { CartContext } from '../src/app/context/CartContext';
 
 const MenuItems = ({item}) => {
 
-
     let [items_in_cart, setItems_in_cart] = useState(0);
     let price = item.price;
     let totalPrice = 0;

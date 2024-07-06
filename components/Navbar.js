@@ -3,44 +3,11 @@ import React, { useEffect, useState } from 'react'
 import { useSession, signIn, signOut } from "next-auth/react"
 import Link from 'next/link';
 import FoodBankIcon from '@mui/icons-material/FoodBank';
-
 import { useRouter } from 'next/navigation';
 
 
-function Navbar({cart , addItem , setCartNumber ,cartNumber}) {
-
-  const [cartStorage , setCartStorage] = useState({});
-
-  useEffect(()=>{
-    setCartStorage(JSON.parse(localStorage.getItem('cart')));
-  },[])
-
+function Navbar({cart}) {
   
-  const [cartItem , setCartItem] = useState(cartStorage);
-  
-
-
-  useEffect(()=>{
-
-    if(cart){
-      console.log(cart);
-    if(cartNumber){
-      let localCartItem = cartItem;
-      localCartItem.push(JSON.parse(JSON.stringify(cart))) // to remove the reference form the cart object
-      setCartItem(localCartItem);
-      setCartNumber(cartNumber+1);
-      localStorage.setItem('cart' ,JSON.stringify(localCartItem));
-
-    }
-    else{
-      setCartNumber(1);
-      setCartItem([cart]);
-      localStorage.setItem('cart' , JSON.stringify([cart]));
-    }
-
-  }
-
-  },[cart])
 
   const router = useRouter();
 
@@ -50,6 +17,7 @@ function Navbar({cart , addItem , setCartNumber ,cartNumber}) {
     localStorage.removeItem("loginToken");
     router.push("/login")
   }
+
   return (
     <div className='container mb-3'>
         <nav className="navbar navbar-expand-lg mt-auto mb-auto">
@@ -63,7 +31,7 @@ function Navbar({cart , addItem , setCartNumber ,cartNumber}) {
           aria-expanded="true"
           aria-label="Toggle navigation"
         >
-          <i className="fa-solid fa-bars"></i>
+        <i className="fa-solid fa-bars"></i>
         </button>
         <Link className="navbar-brand" href="/">GoFood</Link>
        
