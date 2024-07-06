@@ -19,11 +19,41 @@ const RestaurantDetails = ({ restaurant }) => {
   const [orderOnline , setOrderOnline] = useState(false);
   const [overview , setOverview] = useState(true);
   const [cart , setCart] = useState();
+  const [cartNumber , setCartNumber] = useState(0);
+  const [cartStorage , setCartStorage]= useState([]);
+  const [cardIds, setCardids] = useState()
+
+  useEffect(()=>{
+    setCartStorage(JSON.parse(localStorage.getItem('cart'))); 
+
+  },[]);
 
 
   const addItem=(item) => {
+    let cartitems = cartStorage;
+    cartitems = cartitems ? JSON.parse(cartitems) : [];
+
+    const existingItemIndex = cartitems.findIndex(cartItem => cartItem.id === item.id);
+
+    if (existingItemIndex >= 0) {
+      cartitems[existingItemIndex].qty += item.qty;
+    } else {
+      cartitems.push(item);
+    }
+    localStorage.setItem('cart', JSON.stringify(cart));
     setCart(item);
+
   };
+
+  const handleRemovefromCart=(id)=>{
+    
+    if (cartStorage) {
+      let cartItems = cartStorage;
+      cartItems = cartItems.filter(item => item.id !== id);
+      setCart(cartItems);
+    } 
+  }
+
 
   const changeBookmark = () => {
     setisBookmark(!isBookmark);
@@ -60,7 +90,7 @@ const RestaurantDetails = ({ restaurant }) => {
   return (
     <>
       <div className="container mt-2">
-        <Navbar cart={cart} addItem={addItem} />
+        <Navbar cart={cart} addItem={addItem} cartNumber={cartNumber} setCartNumber={setCartNumber}/>
         <DetailsPage image={restaurant.image} />
         <Container>
           <Row>
@@ -145,8 +175,8 @@ const RestaurantDetails = ({ restaurant }) => {
           </div>
 
           <hr className="mt-0" />
-          {overview && <Overview />}
-          {orderOnline && <OrderOnline addItem={addItem}/>}
+          {overview && <Overview price={price}/>}
+          {orderOnline && <OrderOnline addItem={addItem} cartNumber={cartNumber} setCartNumber={setCartNumber} handleRemovefromCart={handleRemovefromCart}/>}
 
         </Container>
       </div>

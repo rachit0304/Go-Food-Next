@@ -49,17 +49,13 @@ const login = () => {
   return (
     <div>
     <section className="vh-100" >
-    <div className="container py-5 h-100">
-        <div className="row d-flex justify-content-center align-items-center h-100">
+    <div className="container py-2 h-50 justify-content-center">
+        <div className="row d-flex justify-content-center align-items-center h-50">
         <div className="col col-xl-10">
-            <div className="card" style={{borderRadius: "1rem"}}>
-            <div className="row g-0">
-                <div className="col-md-6 col-lg-5 d-none d-md-block">
-                <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/img1.webp"
-                    alt="login form" className="img-fluid" style={{borderRadius: "1rem 0 0 1rem"}} />
-                </div>
-                <div className="col-md-6 col-lg-7 d-flex align-items-center">
-                <div className="card-body p-4 p-lg-5 text-black">
+            <div className="row">
+
+                <div className="col-md-6 col-lg-7 d-flex">
+                <div className="card-body p-lg-5 text-black">
 
                     <form>
 
@@ -68,33 +64,32 @@ const login = () => {
                         <span className="h1 fw-bold mb-0">Go-Food</span>
                     </div>
 
-                    <h5 className="fw-normal mb-3 pb-3" style={{letterSpacing: "1px"}}>Sign into your account</h5>
+                    <h5 className="fw-normal mb-1 pb-3" style={{letterSpacing: "1px"}}>Sign into your account</h5>
 
-                    <div data-mdb-input-init className="form-outline mb-4">
+                    <div data-mdb-input-init className="form-outline mb-2">
                         <input name='email' value={email} onChange={handleChange} autoComplete='off' type="email" className="form-control form-control-lg" />
                         <label className="form-label" htmlFor="email">Email address</label>
                     </div>
 
-                    <div data-mdb-input-init className="form-outline mb-4">
+                    <div data-mdb-input-init className="form-outline mb-2">
                         <input value={password} name='password' onChange={handleChange} type="password" className="form-control form-control-lg" />
                         <label className="form-label" htmlFor="password">Password</label>
                     </div>
 
-                    <div className="pt-1 mb-4">
-                        <button data-mdb-button-init data-mdb-ripple-init className="btn btn-dark btn-lg btn-block" type='submit' onClick={handleSubmit}>Login</button>
+                    <div className="mb-3 d-flex justify-content-between">
+                        <button data-mdb-button-init data-mdb-ripple-init className="btn btn-outline-success btn-lg" type='submit' onClick={handleSubmit}>Login</button>
+                        <GitLogin/>
+
                     </div>
 
                     <a className="small text-muted" href="#!">Forgot password?</a>
-                    <p className="mb-5 pb-lg-2" style={{color: "#393f81"}}>Don't have an account? <Link href="/signup"
-                        style={{color: "#393f81"}}>Register here</Link></p>
-              
+                    <p className="mb-2 pb-lg-2" style={{color: "#393f81"}}>Don't have an account? <Link href="/signup"
+                        style={{color: "#393f81", textDecoration: 'none'}}>Register here</Link></p>
                     </form>
 
 
-                    <GitLogin/>
                 </div>
                 </div>
-            </div>
             </div>
         </div>
         </div>

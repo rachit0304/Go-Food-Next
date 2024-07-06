@@ -1,9 +1,31 @@
-import React from "react";
+'use client'
+import React, { useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Container, Row, Col, Card, Button } from "react-bootstrap";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation"
 
 const Users = ({ res }) => {
+
+  const [data,setData] = useState(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch("http://localhost:3000/api/getUsers");
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        const result = await response.json();
+        setData(result);
+      } catch (error) {
+        res.json(error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+
   const router = useRouter();
   const handleDelete = async (id)=>{
     const response = await fetch("http://localhost:3000/api/deleteuser", {
@@ -17,7 +39,7 @@ const Users = ({ res }) => {
     const data = await response.json();
     if (response.ok) {
       alert(data.message);
-      router.reload();
+      router.refresh();
     } else {
       alert(data.message);
     }
@@ -25,7 +47,7 @@ const Users = ({ res }) => {
   return (
     <Container className="mt-5">
       <Row>
-        {res.users.map((item) => (
+        {data && data.users.map((item) => (
           <Col key={item._id} md={6} lg={4} className="mb-4">
             <Card>
               <Card.Body>
@@ -42,12 +64,5 @@ const Users = ({ res }) => {
   );
 };
 
-export const getServerSideProps = async () => {
-  const res = await (
-    await fetch("http://localhost:3000/api/getUsers")
-  ).json();
-
-  return { props: { res } };
-};
 
 export default Users;

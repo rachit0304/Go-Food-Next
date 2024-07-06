@@ -1,11 +1,11 @@
-import React, { useState } from 'react'
+import React, { useState , useContext } from 'react'
 import styles from '../src/app/styles/app.scss'
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
+import { CartContext } from '../src/app/context/CartContext';
 
 
-
-const MenuItems = ({item, addItem}) => {
+const MenuItems = ({item}) => {
 
 
     let [items_in_cart, setItems_in_cart] = useState(0);
@@ -15,22 +15,23 @@ const MenuItems = ({item, addItem}) => {
     const add_cart_class = items_in_cart === 0 ? "d-none" : "";
     const hideClass = items_in_cart > 0 ? "d-none" : "";
 
-    const handleAdd = ()=>{
-      addItem(item);
-      
-    }
-  
-    const add_item = () => {
-      handleAdd();
-      setItems_in_cart(items_in_cart + 1);
-      
-    };
-    const remove_item = () => {
-      if (items_in_cart > 0) {
-        setItems_in_cart(items_in_cart - 1);
-      }
-    };
+    const { cart, dispatch } = useContext(CartContext);
 
+    const addToCart = item => {
+      setItems_in_cart(items_in_cart + 1);
+      dispatch({ type: 'ADD_TO_CART', payload: item });
+    };
+  
+    const increaseQuantity = id => {
+      setItems_in_cart(items_in_cart + 1);
+      dispatch({ type: 'INCREASE_QUANTITY', payload: { id } });
+    };
+  
+    const decreaseQuantity = id => {
+      setItems_in_cart(items_in_cart - 1);
+      dispatch({ type: 'DECREASE_QUANTITY', payload: { id } });
+
+    };
 
   return (
     <div className="d-flex align-items-center">
@@ -50,12 +51,11 @@ const MenuItems = ({item, addItem}) => {
   
         <div>
         <div className='d-flex justify-content-between'> 
-        <span className={`${add_cart_class}`}> <button onClick={add_item} className='btn btn-outline-primary'><AddIcon fontSize='vsmall' /></button> </span>
+        <span className={`${add_cart_class}`}> <button onClick={()=>increaseQuantity(item.id)} className='btn btn-outline-primary'><AddIcon fontSize='vsmall' /></button> </span>
         <span className={`${add_cart_class} m-2`}>{items_in_cart}</span>
-        <span className={`${add_cart_class}`}> <button onClick={remove_item} className='btn btn-outline-primary'><RemoveIcon fontSize='vsmall' /></button> </span>
+        <span className={`${add_cart_class}`}> <button onClick={()=>decreaseQuantity(item.id)} className='btn btn-outline-primary'><RemoveIcon fontSize='vsmall' /></button> </span>
         </div>
-        
-        <button className={`btn btn-primary ${hideClass}`} onClick={add_item}>Add</button>
+        <button className={`btn btn-primary ${hideClass}`} onClick={()=>addToCart(item)}>Add</button>
         </div>
         </div>
     </div>

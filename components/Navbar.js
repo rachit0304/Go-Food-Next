@@ -7,7 +7,7 @@ import FoodBankIcon from '@mui/icons-material/FoodBank';
 import { useRouter } from 'next/navigation';
 
 
-function Navbar({cart , addItem}) {
+function Navbar({cart , addItem , setCartNumber ,cartNumber}) {
 
   const [cartStorage , setCartStorage] = useState({});
 
@@ -17,7 +17,7 @@ function Navbar({cart , addItem}) {
 
   
   const [cartItem , setCartItem] = useState(cartStorage);
-  const [cartNumber , setCartNumber] = useState(cartStorage?.length);
+  
 
 
   useEffect(()=>{

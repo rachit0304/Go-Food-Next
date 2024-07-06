@@ -1,19 +1,33 @@
 'use client'
 import React, { useEffect, useState } from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
 
 const Cart = () => {
 
-  const [cart,setCart] = useState();
+  const [cart,setCart] = useState([]);
 
   useEffect(()=>{
-    setCart(JSON.parse(localStorage.getItem('cart')));
-    console.log(cart);
+    const cart = localStorage.getItem('cart');
+    if (cart) {
+      setCart(JSON.parse(cart));
+
+    }  
   },[])
 
 
+  const handleRemovefromCart=(id)=>{
+
+    if (cart) {
+      let cartItems = cart;
+      cartItems = cartItems.filter(item => item.id !== id);
+      setCart(cartItems);
+      localStorage.setItem('cart', JSON.stringify(cartItems))
+    } 
+  }
+
+
+
   return (
-    <div className="container mt-3">
+    <div className="container mt-3"> 
       <div class="row">
         <div class="col">Item</div>
         <div class="col">Food</div>
@@ -25,7 +39,7 @@ const Cart = () => {
       </div>
 
       <div className="tab-content mt-5">
-            {cart?.length == 0 ? <div> No items </div> : 
+            {cart?.length == 0 ? <div className="mt-4"><div className="fs-4 text-center mt-5"> No items in the cart </div> </div>: 
             <div className="row g-4">
               {
               cart && cart.map((item, itemIndex) => (
@@ -38,9 +52,9 @@ const Cart = () => {
                  
 
                     <div class="col">{item.price}</div>
-                    <div class="col">0</div>
-                    <div class="col">Total</div>
-                    <button className="col btn btn-outline-success">Delete</button>
+                    <div class="col">{item.qty}</div>
+                    <div class="col">{item.qty*item.price}</div>
+                    <button className="col btn btn-outline-success" onClick={()=>handleRemovefromCart(item.id)}>Delete</button>
                   </div>
                 </div>
               ))}

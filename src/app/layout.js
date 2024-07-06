@@ -17,15 +17,13 @@ export default function Layout({ children }) {
         <html lang="en">
           <body>
             
-        <ThemeProvider theme={baselightTheme}>
 
           <CssBaseline />
-
           <SessionProvider session={children.session}>
-          <Navbar/>
+          <Navbar />
           <main> {children}</main>
           </SessionProvider>
-        </ThemeProvider>
+     
         </body>
 
         </html>
