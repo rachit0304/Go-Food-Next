@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { Container, Row, Col, Card } from "react-bootstrap";
-import DetailsPage from "../../components/detailsPage";
+import DetailsPage from "../../src/app/components/DetailsPage";
 import styles from "../../src/app/styles/app.scss";
-import OrderOnline from "../../components/OrderOnline";
+import OrderOnline from "../../src/app/components/OrderOnline";
 import DirectionsIcon from "@mui/icons-material/Directions";
 import BookmarkIcon from "@mui/icons-material/Bookmark";
 import GradeIcon from '@mui/icons-material/Grade';
 import BookmarkBorderIcon from "@mui/icons-material/BookmarkBorder";
 import ScreenShareOutlinedIcon from "@mui/icons-material/ScreenShareOutlined";
-import Overview from "../../components/Overview";
-import Navbar from '../../components/Navbar'
+import Overview from "../../src/app/components/Overview";
+import Navbar from '../../src/app/components/Navbar'
 
 
 const RestaurantDetails = ({ restaurant }) => {
@@ -56,7 +56,7 @@ const RestaurantDetails = ({ restaurant }) => {
   return (
     <>
       <div className="container mt-2">
-        <Navbar cart={cart} />
+        <Navbar/>
         <DetailsPage image={restaurant.image} />
         <Container>
           <Row>
@@ -142,7 +142,7 @@ const RestaurantDetails = ({ restaurant }) => {
 
           <hr className="mt-0" />
           {overview && <Overview price={price}/>}
-          {orderOnline && <OrderOnline/>}
+          {orderOnline && <OrderOnline cartNumber={cartNumber} setCartNumber={setCartNumber} />}
 
         </Container>
       </div>

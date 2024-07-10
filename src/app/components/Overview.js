@@ -1,5 +1,5 @@
 import React from 'react'
-import styles from '../src/app/styles/app.scss'
+import styles from '../../app/styles/app.scss'
 
 const Overview = ({price}) => {
   return (

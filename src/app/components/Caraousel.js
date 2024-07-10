@@ -1,7 +1,7 @@
 import React from 'react'
-import first_image from '../public/assets/images/farhad-ibrahimzade-Sk6my6_KTK0-unsplash.jpg'
-import second_image from '../public/assets/images/lily-banse--YHSwy6uqvk-unsplash.jpg'
-import third_image from '../public/assets/images/pixzolo-photography-3tL4vtrFqTQ-unsplash.jpg'
+import first_image from '../../../public/assets/images/farhad-ibrahimzade-Sk6my6_KTK0-unsplash.jpg'
+import second_image from '../../../public/assets/images/lily-banse--YHSwy6uqvk-unsplash.jpg'
+import third_image from '../../../public/assets/images/pixzolo-photography-3tL4vtrFqTQ-unsplash.jpg'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import Image from 'next/image'
 

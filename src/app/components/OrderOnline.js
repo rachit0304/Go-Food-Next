@@ -1,8 +1,7 @@
 import React, { useEffect, useState, useContext } from "react";
 import MenuItems from "./MenuItems";
-import { CartProvider } from "../src/app/context/CartContext";
 
-const OrderOnline = ({addItem ,cartNumber ,setCartNumber,handleRemovefromCart}) => {
+const OrderOnline = ({cartNumber ,setCartNumber}) => {
   const menuItems = [
     {
       category: "Breakfast",
@@ -116,11 +115,11 @@ const OrderOnline = ({addItem ,cartNumber ,setCartNumber,handleRemovefromCart}) 
 
 
   return (
-    <CartProvider>
+    
     <React.Fragment>
       <div className="py-2">
         <div className="container">
-          <div className="text-center " >
+          <div className="text-center">
             <h5 className="text-center fw-bold mb-5">
               Food Menu
             </h5>
@@ -140,7 +139,7 @@ const OrderOnline = ({addItem ,cartNumber ,setCartNumber,handleRemovefromCart}) 
                   <div className="row g-4">
                     {category.items.map((item, itemIndex) => (
                       <div className="col-lg-6" key={itemIndex}>
-                        <MenuItems item={item}/>
+                        <MenuItems item={item} cartNumber={cartNumber} setCartNumber={setCartNumber}/>
                       </div>
                     ))}
                   </div>
@@ -151,7 +150,7 @@ const OrderOnline = ({addItem ,cartNumber ,setCartNumber,handleRemovefromCart}) 
         </div>
       </div>
     </React.Fragment>
-    </CartProvider>
+  
   );
 };
 

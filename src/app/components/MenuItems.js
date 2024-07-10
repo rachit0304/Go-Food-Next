@@ -1,8 +1,8 @@
 import React, { useState , useContext } from 'react'
-import styles from '../src/app/styles/app.scss'
+import styles from '../../app/styles/app.scss'
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
-import { CartContext } from '../src/app/context/CartContext';
+import { useCart } from '../../app/context/CartContext';
 
 
 const MenuItems = ({item}) => {
@@ -14,7 +14,7 @@ const MenuItems = ({item}) => {
     const add_cart_class = items_in_cart === 0 ? "d-none" : "";
     const hideClass = items_in_cart > 0 ? "d-none" : "";
 
-    const { cart, dispatch } = useContext(CartContext);
+    const { cart, dispatch } = useCart();
 
     const addToCart = item => {
       setItems_in_cart(items_in_cart + 1);

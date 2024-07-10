@@ -4,12 +4,13 @@ import { useSession, signIn, signOut } from "next-auth/react"
 import Link from 'next/link';
 import FoodBankIcon from '@mui/icons-material/FoodBank';
 import { useRouter } from 'next/navigation';
+import { useCart } from '../context/CartContext';
 
-
-function Navbar({cart}) {
+function Navbar() {
   
-
   const router = useRouter();
+  const { cart } = useCart();
+  const totalItems = cart.reduce((sum, item) => sum + item.qty, 0);
 
   const { data: session } = useSession();
 
@@ -19,7 +20,7 @@ function Navbar({cart}) {
   }
 
   return (
-    <div className='container mb-3'>
+    <div className='container mb-3 px-4'>
         <nav className="navbar navbar-expand-lg mt-auto mb-auto">
         <div className="container-fluid">
         <button
@@ -60,7 +61,7 @@ function Navbar({cart}) {
             session ? 
             <div className='d-flex ms-3'>
            
-            <Link className='btn border d-flex' href='/cart'>Cart <i>{"("}{cartNumber ? cartNumber : 0}{")"}</i></Link>
+            <button className='btn border d-flex' onClick={()=>router.push('/cart')}>Cart <i>{"("}{totalItems}{")"}</i></button>
             <button type="button" className="btn btn-outline-primary btn-sm ms-4" onClick={()=>signOut()}>Logout</button> 
             </div>:
             <div className='d-flex m-3'>

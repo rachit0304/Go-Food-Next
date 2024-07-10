@@ -1,13 +1,15 @@
 'use client'
 import React, { useEffect, useState } from "react";
+import { useCart } from "../context/CartContext";
 
 const Cart = () => {
 
   const [cart,setCart] = useState([]);
 
+
   useEffect(()=>{
     const cart = localStorage.getItem('cart');
-    if (cart) {
+    if (cart) { 
       setCart(JSON.parse(cart));
 
     }  
@@ -53,7 +55,7 @@ const Cart = () => {
 
                     <div class="col">{item.price}</div>
                     <div class="col">{item.qty}</div>
-                    <div class="col">{item.qty*item.price}</div>
+                    <div class="col">{item.price}</div>
                     <button className="col btn btn-outline-success" onClick={()=>handleRemovefromCart(item.id)}>Delete</button>
                   </div>
                 </div>
