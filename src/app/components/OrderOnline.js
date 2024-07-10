@@ -9,14 +9,14 @@ const OrderOnline = ({cartNumber ,setCartNumber}) => {
         {
           id: '1',
           name: "French Fries",
-          price: "₹99",
+          price: "99",
           qty: 1,
           imageSrc: "https://i.imgur.com/2ry8F0i.jpg",
         },
         {
           id: '2',
           name: "Burger",
-          price: "₹199",
+          price: "199",
           qty: 1,
 
           imageSrc: "https://images.pexels.com/photos/341044/pexels-photo-341044.png?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
@@ -24,7 +24,7 @@ const OrderOnline = ({cartNumber ,setCartNumber}) => {
         {
           id: '3',
           name: "Paneer Tika",
-          price: "₹299",
+          price: "299",
           qty: 1,
 
           imageSrc: "https://images.pexels.com/photos/2825225/pexels-photo-2825225.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load",
@@ -32,7 +32,7 @@ const OrderOnline = ({cartNumber ,setCartNumber}) => {
         {
           id: '4',
           name: "Momos",
-          price: "₹199",
+          price: "199",
           qty: 1,
 
           imageSrc: "https://images.pexels.com/photos/4078059/pexels-photo-4078059.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load",
@@ -40,7 +40,7 @@ const OrderOnline = ({cartNumber ,setCartNumber}) => {
         {
           id: '5',
           name: "Kadhai Paneer",
-          price: "₹399",
+          price: "399",
           qty: 1,
 
           imageSrc: "https://images.pexels.com/photos/4062498/pexels-photo-4062498.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load",
@@ -48,7 +48,7 @@ const OrderOnline = ({cartNumber ,setCartNumber}) => {
         {
           id: '6',
           name: "Mix Veg",
-          price: "₹149",
+          price: "149",
           qty: 1,
           imageSrc: "https://images.pexels.com/photos/341045/pexels-photo-341045.png?auto=compress&cs=tinysrgb&w=600&lazy=load",
         },

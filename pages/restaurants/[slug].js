@@ -10,9 +10,12 @@ import BookmarkBorderIcon from "@mui/icons-material/BookmarkBorder";
 import ScreenShareOutlinedIcon from "@mui/icons-material/ScreenShareOutlined";
 import Overview from "../../src/app/components/Overview";
 import Navbar from '../../src/app/components/Navbar'
+import { useRouter } from "next/router";
 
 
 const RestaurantDetails = ({ restaurant }) => {
+
+  const router = useRouter();
 
   const [isOpen, setisOpen] = useState(false);
   const [isBookmark, setisBookmark] = useState(false);
@@ -25,7 +28,7 @@ const RestaurantDetails = ({ restaurant }) => {
     setisBookmark(!isBookmark);
   };
 
-  const changeOrderOnline = ()=>{
+  const changeOrderOnline = (newQuery)=>{
     setOverview(false);
     setOrderOnline(true);
 
@@ -34,6 +37,7 @@ const RestaurantDetails = ({ restaurant }) => {
   const changeOverview = ()=>{
     setOrderOnline(false);
     setOverview(true);
+
   }
 
   if (!restaurant) {

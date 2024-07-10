@@ -2,7 +2,6 @@ import React, { createContext, useReducer, useEffect, useContext, useState } fro
 
 const CartContext = createContext();
 
-
 const initialState = [];
 
 const cartReducer = (state, action) => {
