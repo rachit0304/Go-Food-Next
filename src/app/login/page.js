@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import GitLogin from '../components/GitLogin'
+import GitLogin from '../_components/GitLogin'
 
 
 const login = () => {

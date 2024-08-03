@@ -10,18 +10,20 @@ function Navbar() {
   
   const router = useRouter();
   const { cart } = useCart();
-  const [loginToken , setLoginToken] = useState(''); 
+  const [loginToken , setLoginToken] = useState(); 
   const totalItems = cart.reduce((sum, item) => sum + item.qty, 0);
 
-  const { data: session } = useSession();
-
   useEffect(()=>{
-    setLoginToken(localStorage.getItem('loginToken') || '');
-
+    let auth = localStorage.getItem('loginToken');
+    if(auth){
+      setLoginToken(auth);
+    }
   },[])
+
+  const { data: session } = useSession();
   
   const handleLogout=()=>{
-    localStorage.removeItem("loginToken");
+    localStorage.clear();
     router.push("/login")
   }
 
@@ -64,7 +66,7 @@ function Navbar() {
           </ul>
 
           {
-            loginToken !== '' ? 
+            loginToken ? 
             <div className='d-flex ms-3'>
            
             <button className='btn border d-flex' onClick={()=>router.push('/cart')}>Cart <i>{"("}{totalItems}{")"}</i></button>

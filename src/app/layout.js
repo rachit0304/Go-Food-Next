@@ -3,7 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { baselightTheme } from "./utils/theme/DefaultColors";
 import { ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
-import Navbar from "../app/components/Navbar";
+import Navbar from "../app/_components/Navbar";
 import {SessionProvider} from 'next-auth/react'
 import { CartProvider } from "../app/context/CartContext";
 

@@ -1,21 +1,23 @@
 import React, { useEffect, useState } from "react";
 import { Container, Row, Col, Card } from "react-bootstrap";
-import DetailsPage from "../../src/app/components/DetailsPage";
+import DetailsPage from "../../src/app/_components/DetailsPage";
 import styles from "../../src/app/styles/app.scss";
-import OrderOnline from "../../src/app/components/OrderOnline";
+import OrderOnline from "../../src/app/_components/OrderOnline";
 import DirectionsIcon from "@mui/icons-material/Directions";
 import BookmarkIcon from "@mui/icons-material/Bookmark";
 import GradeIcon from '@mui/icons-material/Grade';
 import BookmarkBorderIcon from "@mui/icons-material/BookmarkBorder";
 import ScreenShareOutlinedIcon from "@mui/icons-material/ScreenShareOutlined";
-import Overview from "../../src/app/components/Overview";
-import Navbar from '../../src/app/components/Navbar'
+import Overview from "../../src/app/_components/Overview";
+import Navbar from '../../src/app/_components/Navbar'
 import { useRouter } from "next/router";
 
 
 const RestaurantDetails = ({ restaurant }) => {
 
   const router = useRouter();
+
+  const {slug} = router;
 
   const [isOpen, setisOpen] = useState(false);
   const [isBookmark, setisBookmark] = useState(false);
@@ -28,13 +30,14 @@ const RestaurantDetails = ({ restaurant }) => {
     setisBookmark(!isBookmark);
   };
 
-  const changeOrderOnline = (newQuery)=>{
+  const changeOrderOnline = (section)=>{
     setOverview(false);
     setOrderOnline(true);
 
+
   }
 
-  const changeOverview = ()=>{
+  const changeOverview = (section)=>{
     setOrderOnline(false);
     setOverview(true);
 
@@ -129,11 +132,11 @@ const RestaurantDetails = ({ restaurant }) => {
           </Row>
 
           <div className="mt-4 d-flex">
-            <p onClick={changeOverview} className="fw-light text-secondary mx-4 fs-4">
+            <p onClick={()=>changeOverview('query')} className="fw-light text-secondary mx-4 fs-4">
                Overview 
             </p>
 
-            <p onClick={changeOrderOnline} className="fw-light text-secondary mx-4 fs-4">
+            <p onClick={()=>changeOrderOnline('query')} className="fw-light text-secondary mx-4 fs-4">
               Order Online
             </p>
             <p className="fw-light text-secondary mx-4 fs-4">

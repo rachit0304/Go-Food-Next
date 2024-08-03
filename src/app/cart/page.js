@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { useCart } from "../context/CartContext";
 import { useRouter } from "next/navigation";
+import Checkout from '../_components/Checkout'
 
 const Cart = () => {
   const router = useRouter();
@@ -65,9 +66,7 @@ const Cart = () => {
                     <div class="col">{itemIndex+1}</div>
                    
                     <div className="col"><img src={item.imageSrc} alt="" style={{ width: 60 , height: 30 }}/></div>
-                    <div class="col">{item.name}</div>
-                 
-
+                    <div class="col">{item.name}</div>                 
                     <div class="col">₹{item.price}</div>
                     <div class="col">{item.qty}</div>
                     <div class="col">₹{item.qty * parseInt(item.price)}</div>
@@ -79,12 +78,8 @@ const Cart = () => {
             }
   
       </div>
-      <button className="btn btn-success mt-3 " onClick={handleCheckout}>Checkout</button>
-      {checkoutMessage && (
-        <div className="alert alert-success mt-4">
-          {checkoutMessage}
-        </div>
-      )}
+      <Checkout handleCheckout={handleCheckout}/>
+
     </div>
   );
 };

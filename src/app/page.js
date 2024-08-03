@@ -1,7 +1,7 @@
-import Caraousel from '../app/components/Caraousel';
-import Filter_buttons from "../app/components/Filter_buttons";
+import Caraousel from '../app/_components/Caraousel';
+import Filter_buttons from "../app/_components/Filter_buttons";
 import Script from "next/script";
-import Restaurants from "../app/components/Restaurants";
+import Restaurants from "../app/_components/Restaurants";
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 export default function Home() {

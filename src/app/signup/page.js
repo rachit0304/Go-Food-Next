@@ -7,7 +7,6 @@ import { useRouter } from 'next/navigation';
 
 const signup = () => {
     let router = useRouter();
-
     const [email , setEmail] = useState("");
     const [password , setPassword] = useState("");
     const [name , setName] = useState("");
@@ -38,7 +37,10 @@ const signup = () => {
         let response = await res.json();
         console.log(response);
         if(response.success == "Success"){
+          let user = response.user;
+          delete user.password;
           alert("You have created your account successfully")
+          localStorage.setItem('user' , user);
           router.push("/login");
         }
     }
